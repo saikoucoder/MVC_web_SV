@@ -56,10 +56,12 @@ class Model_Student
       mysqli_select_db($link, 'DULIEU');
       $rs = mysqli_query($link, "SELECT * FROM SINHVIEN WHERE $value LIKE '%$value1%' ");
       $studentlist = array();
-      while($row = mysqli_fetch_array($rs))
-      {
-          $student[] = new Entity_Student($row['id'],$row['name'],$row['age'],$row['university']);
-      }
+         while($row = mysqli_fetch_array($rs))
+         {
+            $student[] = new Entity_Student($row['id'],$row['name'],$row['age'],$row['university']);
+            if($value = "id" )
+               break;
+         }
       return $student;
   }
    
